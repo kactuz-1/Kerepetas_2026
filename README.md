@@ -7,13 +7,9 @@ Matavimo sistema su PoE kamera, Raspberry Pi 5, STM32 valdikliu ir 5G ryšiu, ma
 | Dokumentas | Failas |
 | --- | --- |
 | Blokinė schema (PDF) | [docs/blokine_schema.pdf](docs/blokine_schema.pdf) |
-| Blokinė schema (SVG) | [docs/blokine_schema.svg](docs/blokine_schema.svg) |
 | Komponentų sąrašas (PDF) | [docs/komponentai.pdf](docs/komponentai.pdf) |
-| Komponentų sąrašas (Excel) | [docs/komponentai.xlsx](docs/komponentai.xlsx) |
 
 ## Blokinė schema
-
-![Blokinė schema](docs/blokine_schema.svg)
 
 ```mermaid
 flowchart TD
