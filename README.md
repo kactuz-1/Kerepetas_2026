@@ -40,7 +40,7 @@ PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje ji
 - **Baterija:** LiFePO4 16S, darbinė įtampa ~51–53 V, pilnai įkrauta iki 58,4 V.
 - **Q1 apsauga:** 2 polių DC automatinis jungiklis Eaton PL7-C6/2-DC – atjungia ir +, ir −. Jungti pagal + / − ženklinimą.
 - **12 V linija (U1):** įėjimas 18–75 V, maitina Cudy P5 (iki 25,2 W) ir kamerą (~5–10 W).
-- **5 V linija (U2):** įėjimas 18–75 V, išėjimą pakelti iki 5,1–5,2 V, laidas iki Pi trumpas (≤30 cm, 0,5–0,75 mm²), jungti per lituojamą USB-C kištuką (VBUS + GND, CC per 10 kΩ į VBUS) – žr. [jungimo metodiką](docs/jungimo_metodika_v3.pdf).
+- **5 V linija (U2):** įėjimas 18–75 V, išėjimą pakelti iki 5,1–5,2 V, laidas iki Pi trumpas (≤30 cm, 0,5–0,75 mm²), jungti per lituojamą GOOBAY USB-C kištuką (aikštelės V ir G) – žr. [jungimo metodiką](docs/jungimo_metodika_v3.pdf).
 - **IP kamera:** turi turėti 12 V DC įėjimą.
 - **Suvartojimas:** ~45–55 W, apie 1 A iš baterijos.
 - **Raspberry Pi 5:** EEPROM'e (`sudo rpi-eeprom-config --edit`) įrašyti `PSU_MAX_CURRENT=5000`; papildomai galima `/boot/firmware/config.txt` → `usb_max_current_enable=1`.
