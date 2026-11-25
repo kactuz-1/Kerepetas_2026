@@ -8,6 +8,7 @@ Matavimo sistema su IP kamera, Raspberry Pi 5, STM32 valdikliu ir 5G ryšiu, mai
 | --- | --- | --- | --- |
 | Blokinė schema | [blokine_schema_v3.pdf](docs/blokine_schema_v3.pdf) | [blokine_schema_v2.pdf](docs/blokine_schema_v2.pdf) | [blokine_schema.pdf](docs/blokine_schema.pdf) |
 | Komponentų sąrašas | [komponentai_v3.pdf](docs/komponentai_v3.pdf) | [komponentai_v2.pdf](docs/komponentai_v2.pdf) | [komponentai.pdf](docs/komponentai.pdf) |
+| Jungimo metodika | [jungimo_metodika_v3.pdf](docs/jungimo_metodika_v3.pdf) | – | – |
 
 **v3 skiriasi nuo v2:** atsisakyta PoE – nebėra TSW100, 48 V keitiklio ir Pi 5 PoE HAT. Dvi linijos tiesiai nuo baterijos: 12 V (Cudy P5 ir kamera) ir 5 V (Raspberry Pi 5). Cudy P5 4× LAN prievadai atlieka komutatoriaus darbą.
 
@@ -30,6 +31,7 @@ Cudy P5 gamintojo nurodyta darbinė temperatūra yra **0…+40 °C**. Lauke įre
 | U2 | Mean Well DDR-60L-5 (5 V) | [DigiKey](https://www.digikey.ie/en/products/detail/mean-well-usa-inc/DDR-60L-5/8681216) · [TME](https://www.tme.eu/gb/details/DDR-60L-5/) |
 | A2 | Cudy P5 1.0 | [Lemona](https://www.lemona.lt/en/modem-router-4-ports-cudy-p5-1-0.html) |
 | A3 | Raspberry Pi 5 4 GB | [Lemona](https://www.lemona.lt/en/single-board-computer-raspberry-pi-5-b-4gb-ram.html) |
+| – | Lituojamas USB-C kištukas (U2 → Pi 5) | [Lemona](https://www.lemona.lt/kistukas-usb-c-tipo-kabelinis-lituojamas.html) |
 
 PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje jie neveikia – reikia PDF atsisiųsti.
 
@@ -38,7 +40,7 @@ PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje ji
 - **Baterija:** LiFePO4 16S, darbinė įtampa ~51–53 V, pilnai įkrauta iki 58,4 V.
 - **Q1 apsauga:** 2 polių DC automatinis jungiklis Eaton PL7-C6/2-DC – atjungia ir +, ir −. Jungti pagal + / − ženklinimą.
 - **12 V linija (U1):** įėjimas 18–75 V, maitina Cudy P5 (iki 25,2 W) ir kamerą (~5–10 W).
-- **5 V linija (U2):** įėjimas 18–75 V, išėjimą pakelti iki 5,1–5,2 V, laidas iki Pi trumpas (≥1 mm²), jungti per USB-C.
+- **5 V linija (U2):** įėjimas 18–75 V, išėjimą pakelti iki 5,1–5,2 V, laidas iki Pi trumpas (≤30 cm, 0,5–0,75 mm²), jungti per lituojamą USB-C kištuką (VBUS + GND, CC per 10 kΩ į VBUS) – žr. [jungimo metodiką](docs/jungimo_metodika_v3.pdf).
 - **IP kamera:** turi turėti 12 V DC įėjimą.
 - **Suvartojimas:** ~45–55 W, apie 1 A iš baterijos.
-- **Raspberry Pi 5:** į `/boot/firmware/config.txt` įrašyti `usb_max_current_enable=1`.
+- **Raspberry Pi 5:** EEPROM'e (`sudo rpi-eeprom-config --edit`) įrašyti `PSU_MAX_CURRENT=5000`; papildomai galima `/boot/firmware/config.txt` → `usb_max_current_enable=1`.
