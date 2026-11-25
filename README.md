@@ -9,7 +9,7 @@ Matavimo sistema su PoE kamera, Raspberry Pi 5, STM32 valdikliu ir 5G ryšiu, ma
 | Blokinė schema | [docs/blokine_schema_v2.pdf](docs/blokine_schema_v2.pdf) | [docs/blokine_schema.pdf](docs/blokine_schema.pdf) |
 | Komponentų sąrašas | [docs/komponentai_v2.pdf](docs/komponentai_v2.pdf) | [docs/komponentai.pdf](docs/komponentai.pdf) |
 
-**v2 skiriasi nuo v1:** vietoj Hager saugiklio – 2 polių DC automatas Eaton PL7-C6/2-DC; vietoj Teltonika RUTC50 naudojamas Cudy P5, maitinamas per atskirą 12 V keitiklį (Mean Well SD-100C-12). 48 V keitiklis U1 dabar maitina tik TSW100.
+**v2 skiriasi nuo v1:** vietoj Teltonika RUTC50 naudojamas Cudy P5, maitinamas per atskirą 12 V keitiklį (Mean Well SD-100C-12). 48 V keitiklis U1 dabar maitina tik TSW100.
 
 ## Blokinė schema (v2)
 
