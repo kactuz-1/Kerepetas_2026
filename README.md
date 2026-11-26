@@ -51,8 +51,8 @@ PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje ji
 ![Emergency stop schema](docs/emergency_stop_schema.png)
 
 - **Grybas S0 (fiksuojamas, 2× NC):** 1-as NC nutraukia kontaktoriaus K1 ritės grandinę aparatūriškai, 2-as NC – signalas į STM (IN1).
-- **Savilaika:** K1 laikosi per savo 13-14 kontaktą. START rėlė K3 duoda tik trumpą impulsą, todėl po grybo atstatymo, STM perkrovimo ar įtampos dingimo K1 pats neįsijungia.
-- **STOP rėlė K2 (NO):** laikoma įjungta, kol leidžiama dirbti. Valdoma dinaminiu signalu per krūvio siurblį – jei STM pakimba ir išėjimas užstringa HIGH arba LOW, K2 atkrenta.
-- **STM32:** IWDG įjungtas, pull-down ant rėlių tranzistorių, ryšio sargas (5–10 s), K1 būsena tikrinama per IN2.
+- **Savilaika:** K1 laikosi per savo 13-14 kontaktą. START rėlė K3 duoda tik trumpą impulsą, todėl po grybo atstatymo ar įtampos dingimo K1 pats neįsijungia.
+- **STOP rėlė K2 (NO):** laikoma įjungta, kol leidžiama dirbti; ją išjungus K1 atkrenta.
+- **IN2:** K1 pagalbinis kontaktas – STM tikrina, ar kontaktorius tikrai įsijungė.
 
 Plačiau – [emergency_stop.pdf](docs/emergency_stop.pdf).
