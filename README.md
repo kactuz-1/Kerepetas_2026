@@ -76,7 +76,7 @@ Plačiau – [vidinis_dac.pdf](docs/vidinis_dac.pdf).
 
 - **Įėjimai IN1, IN2** (grybas, K1 pagalbinis kontaktas) – per optronus PC817, rezistorius parenkamas pagal valdymo įtampą (12/24/48 V).
 - **Išėjimai OUT1, OUT2** (K2, K3) – loginio lygio MOSFET žemojoje pusėje + diodas, į DIN tarpines reles.
-- **Greitis AO** – vidinis DAC + MCP6001 (0–5 V).
+- **Greitis AO1, AO2** (2 varikliai) – vidinis DAC1 (PA4) ir DAC2 (PA6, D12) + MCP6001 (0–5 V). A1 (PA1) DAC neturi.
 - **Kryptis DIR1, DIR2** – 74AHCT125 buferis (5 V) su pull-down ant įėjimų; abu DIR niekada nebūna 1 kartu.
 - Rekomenduojama valdymo įtampa – 24 V DC. Numatyta galimybė viską sudėti į PCB skydelį ant Nucleo.
 
