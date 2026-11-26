@@ -54,5 +54,6 @@ PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje ji
 - **Savilaika:** K1 laikosi per savo 13-14 kontaktą. START rėlė K3 duoda tik trumpą impulsą, todėl po grybo atstatymo ar įtampos dingimo K1 pats neįsijungia.
 - **STOP rėlė K2 (NO):** laikoma įjungta, kol leidžiama dirbti; ją išjungus K1 atkrenta.
 - **IN2:** K1 pagalbinis kontaktas – STM tikrina, ar kontaktorius tikrai įsijungė.
+- **Greičio signalas:** 0–5 V per I2C DAC modulį DFRobot DFR1073 (GP8413). Paleidus STM pirmiausia įrašyti DAC = 0, diapazoną (0–5 V) nustatyti prieš kiekvieną įrašymą – modulis gali duoti iki 10 V. Saugos įvertinimas – PDF 2 psl.
 
 Plačiau – [emergency_stop.pdf](docs/emergency_stop.pdf).
