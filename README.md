@@ -10,6 +10,7 @@ Matavimo sistema su IP kamera, Raspberry Pi 5, STM32 valdikliu ir 5G ryšiu, mai
 | Komponentų sąrašas | [komponentai_v3.pdf](docs/komponentai_v3.pdf) | [komponentai_v2.pdf](docs/komponentai_v2.pdf) | [komponentai.pdf](docs/komponentai.pdf) |
 | Jungimo metodika | [jungimo_metodika_v3.pdf](docs/jungimo_metodika_v3.pdf) | – | – |
 | Emergency stop (avarinis stabdymas) | [emergency_stop.pdf](docs/emergency_stop.pdf) | – | – |
+| Vidinis DAC (0–5 V greičio signalas) | [vidinis_dac.pdf](docs/vidinis_dac.pdf) | – | – |
 
 **v3 skiriasi nuo v2:** atsisakyta PoE – nebėra TSW100, 48 V keitiklio ir Pi 5 PoE HAT. Dvi linijos tiesiai nuo baterijos: 12 V (Cudy P5 ir kamera) ir 5 V (Raspberry Pi 5). Cudy P5 4× LAN prievadai atlieka komutatoriaus darbą.
 
@@ -57,3 +58,13 @@ PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje ji
 - **Greičio signalas:** 0–5 V per I2C DAC modulį DFRobot DFR1073 (GP8413). Paleidus STM pirmiausia įrašyti DAC = 0, diapazoną (0–5 V) nustatyti prieš kiekvieną įrašymą – modulis gali duoti iki 10 V. Saugos įvertinimas – PDF 2 psl.
 
 Plačiau – [emergency_stop.pdf](docs/emergency_stop.pdf).
+
+## Vidinis DAC – 0–5 V greičio signalas iš NUCLEO-G474RE
+
+![Vidinio DAC schema](docs/vidinis_dac_schema.png)
+
+- **PA4 (A2), DAC1:** 0–3,3 V, išėjimo buferis išjungtas (kad pasiektų 0 V).
+- **MCP6001 (rail-to-rail), maitinimas iš USB 5 V:** stiprinimas 1 + 5,1 kΩ / 10 kΩ ≈ 1,51 → ~5,0 V.
+- **1 MΩ pull-down:** STM perkrovimo metu signalas 0 V; stiprintuvas negali viršyti ~5 V.
+
+Plačiau – [vidinis_dac.pdf](docs/vidinis_dac.pdf).
