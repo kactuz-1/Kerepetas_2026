@@ -9,6 +9,7 @@ Matavimo sistema su IP kamera, Raspberry Pi 5, STM32 valdikliu ir 5G ryšiu, mai
 | Blokinė schema | [blokine_schema_v3.pdf](docs/blokine_schema_v3.pdf) | [blokine_schema_v2.pdf](docs/blokine_schema_v2.pdf) | [blokine_schema.pdf](docs/blokine_schema.pdf) |
 | Komponentų sąrašas | [komponentai_v3.pdf](docs/komponentai_v3.pdf) | [komponentai_v2.pdf](docs/komponentai_v2.pdf) | [komponentai.pdf](docs/komponentai.pdf) |
 | Jungimo metodika | [jungimo_metodika_v3.pdf](docs/jungimo_metodika_v3.pdf) | – | – |
+| Emergency stop (avarinis stabdymas) | [emergency_stop.pdf](docs/emergency_stop.pdf) | – | – |
 
 **v3 skiriasi nuo v2:** atsisakyta PoE – nebėra TSW100, 48 V keitiklio ir Pi 5 PoE HAT. Dvi linijos tiesiai nuo baterijos: 12 V (Cudy P5 ir kamera) ir 5 V (Raspberry Pi 5). Cudy P5 4× LAN prievadai atlieka komutatoriaus darbą.
 
@@ -44,3 +45,14 @@ PDF faile parduotuvių pavadinimai irgi yra nuorodos, bet GitHub peržiūroje ji
 - **IP kamera:** Hikvision (modelis dar nežinomas) – patikrinti, kad turi 12 V DC lizdą (dažniausiai 5,5 × 2,1 mm, centras +).
 - **Suvartojimas:** ~45–55 W, apie 1 A iš baterijos.
 - **Raspberry Pi 5:** EEPROM'e (`sudo rpi-eeprom-config --edit`) įrašyti `PSU_MAX_CURRENT=5000`; papildomai galima `/boot/firmware/config.txt` → `usb_max_current_enable=1`.
+
+## Emergency stop – nuotolinis kontaktoriaus valdymas su STM32
+
+![Emergency stop schema](docs/emergency_stop_schema.png)
+
+- **Grybas S0 (fiksuojamas, 2× NC):** 1-as NC nutraukia kontaktoriaus K1 ritės grandinę aparatūriškai, 2-as NC – signalas į STM (IN1).
+- **Savilaika:** K1 laikosi per savo 13-14 kontaktą. START rėlė K3 duoda tik trumpą impulsą, todėl po grybo atstatymo, STM perkrovimo ar įtampos dingimo K1 pats neįsijungia.
+- **STOP rėlė K2 (NO):** laikoma įjungta, kol leidžiama dirbti. Valdoma dinaminiu signalu per krūvio siurblį – jei STM pakimba ir išėjimas užstringa HIGH arba LOW, K2 atkrenta.
+- **STM32:** IWDG įjungtas, pull-down ant rėlių tranzistorių, ryšio sargas (5–10 s), K1 būsena tikrinama per IN2.
+
+Plačiau – [emergency_stop.pdf](docs/emergency_stop.pdf).
