@@ -11,6 +11,7 @@ Matavimo sistema su IP kamera, Raspberry Pi 5, STM32 valdikliu ir 5G ryšiu, mai
 | Jungimo metodika | [jungimo_metodika_v3.pdf](docs/jungimo_metodika_v3.pdf) | – | – |
 | Emergency stop (avarinis stabdymas) | [emergency_stop.pdf](docs/emergency_stop.pdf) | – | – |
 | Vidinis DAC (0–5 V greičio signalas) | [vidinis_dac.pdf](docs/vidinis_dac.pdf) | – | – |
+| STM32 I/O galimybių studija | [io_galimybiu_studija.pdf](docs/io_galimybiu_studija.pdf) | – | – |
 
 **v3 skiriasi nuo v2:** atsisakyta PoE – nebėra TSW100, 48 V keitiklio ir Pi 5 PoE HAT. Dvi linijos tiesiai nuo baterijos: 12 V (Cudy P5 ir kamera) ir 5 V (Raspberry Pi 5). Cudy P5 4× LAN prievadai atlieka komutatoriaus darbą.
 
@@ -68,3 +69,15 @@ Plačiau – [emergency_stop.pdf](docs/emergency_stop.pdf).
 - **1 MΩ pull-down:** STM perkrovimo metu signalas 0 V; stiprintuvas negali viršyti ~5 V.
 
 Plačiau – [vidinis_dac.pdf](docs/vidinis_dac.pdf).
+
+## STM32 I/O galimybių studija
+
+![I/O blokinė schema](docs/io_galimybiu_studija_schema.png)
+
+- **Įėjimai IN1, IN2** (grybas, K1 pagalbinis kontaktas) – per optronus PC817, rezistorius parenkamas pagal valdymo įtampą (12/24/48 V).
+- **Išėjimai OUT1, OUT2** (K2, K3) – loginio lygio MOSFET žemojoje pusėje + diodas, į DIN tarpines reles.
+- **Greitis AO** – vidinis DAC + MCP6001 (0–5 V).
+- **Kryptis DIR1, DIR2** – 74AHCT125 buferis (5 V) su pull-down ant įėjimų; abu DIR niekada nebūna 1 kartu.
+- Rekomenduojama valdymo įtampa – 24 V DC. Numatyta galimybė viską sudėti į PCB skydelį ant Nucleo.
+
+Plačiau – [io_galimybiu_studija.pdf](docs/io_galimybiu_studija.pdf).
